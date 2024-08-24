@@ -124,7 +124,7 @@ func (c *Client) GetOTP(site string, email string) (string, error) {
 		case "Nike":
 			break
 		case "UberEats":
-			if strings.EqualFold(msg.Envelope.To[0].Address(), email) && strings.Contains(msg.Envelope.Subject, "Welcome to Uber") {
+			if msg.Envelope.Subject == "Welcome to Uber" && strings.EqualFold(msg.Envelope.To[0].Address(), email) {
 				foundEmail = true
 
 				r := msg.GetBody(section)
